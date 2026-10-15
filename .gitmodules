@@ -1,0 +1,12 @@
+[submodule "edl"]
+	path = edl
+	url = https://github.com/bkerler/edl.git
+[submodule "firehoses"]
+	path = firehoses
+	url = https://github.com/zenlty/Qualcomm-Firehose.git
+[submodule "firehoses-pixel-oneplus"]
+	path = firehoses-pixel-oneplus
+	url = https://github.com/thantoeaungat/firehose.git
+[submodule "mtk"]
+	path = mtk
+	url = https://github.com/bkerler/mtkclient.git

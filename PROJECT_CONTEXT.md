@@ -1,93 +1,94 @@
 # FRP GONE — Project Context and Handoff
 
-Updated: October 15, 2026, 10:54 AM CST (Regina, Saskatchewan)
-Project root: `X:\FRP-GONE\`
-Status: Provisional, history-grounded handoff; current local implementation not inspected.
-Snapshot: Branches, commits, working-tree changes, and repository instructions unknown.
-Audience: A coding agent with access to the Windows project directory but no prior conversation.
+Updated: October 15, 2026, 11:33 AM CST (Regina, Saskatchewan)
+Repository: `krymm/FRP-GONE-NEW`; branch: `master`
+Reviewed base: `c41b8921ff0563a8033a0120b54bf27499be334c`
+Local project root: `X:\FRP-GONE\`
+Working tree: Unknown; review used remote repository access.
+Status: Dependency scaffold with restored submodule URL mappings; integrated application and runtime remain unverified.
 
 ## Goal and constraints
 
-Build a Windows phone-servicing toolkit with an interactive menu, model-specific batch launchers, supporting runtimes/tools, programmer files, setup documentation, and a reusable project skill. The original user request focused on FRP-related servicing using Qualcomm Firehose tooling. MediaTek support was also discussed, but no completed integration is evidenced.
+Build a Windows phone-servicing toolkit with an interactive menu, model-specific configuration or launchers, supporting tools, programmer collections, setup documentation, and consistent logging. Historical scope focused on FRP-related servicing using Qualcomm tooling; MediaTek support was also discussed. Intended flow: menu → model configuration → shared launcher → selected dependency. This integration is planned, not established by dependency presence.
 
-User requirements and constraints:
-- Use `X:\FRP-GONE\` as the project root.
-- Include required supporting files in the project structure rather than supplying only instructions.
-- Use GitHub and web search for research and sourcing; do not use Firecrawl or Hugging Face.
-- Preserve a structure that allows additional models to be added later.
-
-This document records project intent, not validated authorization, device compatibility, or readiness for device operations. Establish the scope of authorized servicing before implementing device-changing functionality.
-
-## Evidence and review limits
-
-Sources: supplied `conv-hist.txt`, supplied `SKILL.md` (project-context-handoff), and the user's explicit project-root designation.
-
-The conversation contains planning, speculative technical claims, and selected historical Windows command output. Treat these separately: command output supports only what was observed at that time; an earlier assistant statement does not establish implementation or successful operation.
-
-No current local files, Git metadata, existing handoff documents, or repository instructions were inspected while drafting this document. No environment changes, downloads, dependency installations, or phone operations were performed. No existing local document was overwritten. Reconcile this draft with the accessible codebase before presenting it as a current implementation snapshot.
+Use GitHub and web search for sourcing, not Firecrawl or Hugging Face. Preserve `X:\FRP-GONE\` as the intended local root and allow additional models without duplicating the implementation. Establish authorized servicing scope before implementing device-changing functions.
 
 ## Current implementation
 
-Historical command output supports the following limited observations:
+The parent contains `PROJECT_CONTEXT.md`, `_firehose_list.txt`, four submodule gitlinks, and ancillary directories under `current_session_context/`, `pip/cache/`, and `Microsoft/Windows/PowerShell/`. Directory listings were inspected; artifact contents were not comprehensively audited.
 
-| Relative path | Reported source and contents | Status |
+This revision adds root `.gitmodules` with explicit HTTPS URLs for all four existing gitlinks. It does not change dependency commits, upstream source, programmer binaries, or device behavior. No branch-tracking entries are added. The parent records pinned commits; do not use `git submodule update --remote` as a substitute for reproducing them.
+
+The reviewed base has no root README, SKILL.md, project-level menu/setup script, models directory, tests, or CI configuration. Their absence at the root does not prove there are no relevant local untracked files or scripts buried in artifact directories. The intended menu, shared launcher, model wrappers, setup flow, and project skill remain unverified/planned. Keep this existing handoff as the canonical context file rather than introducing a duplicate SKILL.md.
+
+## Submodule references
+
+| Parent path | Upstream repository | Pinned commit |
 |---|---|---|
-| `edl\` | `bkerler/edl`; `edl.py` existence check returned true; root listing included `edlclient\`, `edl.bat`, `Drivers\`, and `Loaders\` | Historically observed; current state and runtime unverified |
-| `firehoses\` | `zenlty/Qualcomm-Firehose`; a top-level listing reported 163 entries | Historically observed; exact usable-file count and device compatibility unverified |
-| `firehoses-pixel-oneplus\` | `thantoeaungat/firehose`; listings included assorted OnePlus, Samsung, and generic programmer filenames | Historically observed; folder name does not prove Pixel support |
-| `mtk\` | `bkerler/mtkclient`; root listing included `mtk.py`, `mtk.bat`, `mtkclient\`, and `Setup\` | Historically observed; runtime unverified |
+| `edl` | `https://github.com/bkerler/edl.git` | `1cda1a616748d608667b2d13b73a28d3197ceb45` |
+| `firehoses` | `https://github.com/zenlty/Qualcomm-Firehose.git` | `c9cfcae6ec62f2586aaeb96d9a99b59eb0b10e27` |
+| `firehoses-pixel-oneplus` | `https://github.com/thantoeaungat/firehose.git` | `56bd8a3d54f9dc69ddf59ee486c557b8cb25cd05` |
+| `mtk` | `https://github.com/bkerler/mtkclient.git` | `7cb40e727727dfe3faa065eefb29b16ed29bbdf1` |
 
-The following deliverables were planned, but their creation was not demonstrated:
-- Main interactive menu, proposed as `FRP-GONE.bat` or `frp_gone.bat`.
-- Shared launcher and model-specific wrappers under a proposed `models\` directory.
-- Setup script, proposed as `install-tools.bat` or another dependency-installer name.
-- Project `README.md`, consolidated driver organization, and `_logs\`.
-- A reusable FRP GONE local skill.
+All four entries were individually confirmed as submodules during the remote review. The EDL and MediaTek source commits were inspected in their upstream repositories; the two collection commit identities were subsequently verified against their listed upstreams. These checks do not verify programmer compatibility, binary safety, redistribution rights, or hardware behavior.
 
-Do not assume these files are absent today; inspect the working tree. The attached `SKILL.md` describes the handoff workflow, not proof that the separate FRP GONE project skill was created.
+EDL itself declares `Loaders` in its `.gitmodules`, with URL `https://github.com/bkerler/Loaders` and branch metadata `main`. At the pinned EDL revision, `Loaders` is a gitlink pinned to `6c416255056a178f54ccd7ee9b67d04a5bdfa8e6`. Recursive initialization is required to populate it. Ordinary pinned checkout does not require advancing to that branch's latest commit.
 
-## Code map and intended flow
+## Code map
 
-Historically observed navigation points:
-- `edl\edl.py` / `edl\edlclient\`: Qualcomm tooling entry point and implementation.
-- `edl\requirements.txt`: dependency manifest used by the attempted installation.
-- `edl\Drivers\Windows\`: listing included `Install_Windows.bat`, `zadig-2.8.exe`, and `libusb-1.0.26-binaries.7z`.
-- `mtk\mtk.py` / `mtk\mtk.bat`: MediaTek entry points. An earlier attempt used an incorrect entry-point path before the root listing clarified it.
-- `mtk\requirements.txt`: dependency manifest targeted by the installation attempt.
-- `mtk\Setup\`: inspected listing showed Linux setup resources; a bundled Windows driver package was not established there.
+- `edl/edl.py`: inspected upstream CLI/orchestration entry point. Uses docopt, USB/serial transport, Sahara communication, and Firehose/streaming clients. Main orchestration is in `main.run()`.
+- `edl/edlclient/Library/`: referenced transport and protocol implementations; not exhaustively reviewed.
+- `edl/pyproject.toml`: inspected manifest declares edlclient 3.62, Python >=3.10, and installed console entry point `edlclient.edl:run`. Installed-console behavior was not tested.
+- `mtk/mtk.py`: inspected upstream argparse entry point, banner version 2.1.4; delegates to `Main(args).run(parser)` from `mtkclient.Library.mtk_main`. Delegated implementation was not reviewed in depth.
+- `_firehose_list.txt`: inventory artifact, not a validated support matrix.
 
-Intended architecture, not implemented evidence: menu selection → model-specific configuration/wrapper → shared tool launcher → underlying tool, with setup and logging handled consistently. The exact configuration format and naming convention remain undecided.
+## Checkout and verification
 
-There is no verified project-level setup, run, or test command. Inspect scripts before executing them; do not derive executable device-changing procedures from the speculative historical notes.
+Proposed commands below are documented procedures, not checks executed during this remote review. For a new checkout, use a new/empty destination, not an existing populated project directory:
 
-## Decisions, mismatches, and pitfalls
+```powershell
+git clone --recurse-submodules https://github.com/krymm/FRP-GONE-NEW.git FRP-GONE-NEW
+cd FRP-GONE-NEW
+git submodule status --recursive
+```
 
-- Programmer compatibility remains unresolved. The prior discussion guessed that names such as `3_emmc_ddr.mbn` identified Pixel devices. No confirming mapping was established. Keep these unsupported rather than adding them as working menu options.
-- Earlier statements about partition formatting, FRP behavior, chipset/model pairings, and tool arguments were speculative. Validate against the actual tool version and device-specific evidence before using them as requirements.
-- Listed Zadig/libusb utilities do not substantiate the earlier claim that a particular signed Qualcomm driver package had been downloaded and verified. Driver availability and suitability remain unresolved.
-- Git progress written to stderr was interpreted as failure by a prior PowerShell invocation. Later path/listing checks showed repository contents. Inspect actual process status and repository integrity rather than treating stderr alone as failure or assuming every nonzero exit was harmless.
-- A nested `X:\FRP-GONE\FRP-GONE\` directory was described as empty. Its purpose is unknown. Do not delete or relocate it without inspection.
-- Earlier suggestions to install packages globally were not a settled environment strategy. Inspect existing environments before proposing changes; do not install dependencies just to prepare a handoff.
+For the existing Windows checkout, inspect and preserve local work first:
 
-## Verification and precise resume point
+```powershell
+git -C 'X:\FRP-GONE' status --short
+git -C 'X:\FRP-GONE' submodule status --recursive
+git -C 'X:\FRP-GONE' submodule foreach --recursive 'git status --short'
+```
 
-Historical checks: selected directory listings, entry-point existence checks, driver-resource listings, and dependency-manifest reads. An attempted help invocation encountered a missing `docopt` dependency.
+After fetching and integrating the approved parent change using the local workflow, and resolving any local changes or conflicting submodule remotes:
 
-A background installation was then started for the EDL and MediaTek requirement sets. The supplied record contains no final success result. Do not assume dependencies were installed or that a process is still running; historical background-job handles cannot establish current process state.
+```powershell
+git -C 'X:\FRP-GONE' submodule sync --recursive
+git -C 'X:\FRP-GONE' submodule update --init --recursive
+git -C 'X:\FRP-GONE' submodule status --recursive
+```
 
-The last evidenced work involved dependency installation, MediaTek setup resources, and uncertain programmer-to-device mappings. No finished menu, confirmed phone-support matrix, successful hardware connection, end-to-end servicing result, or automated test pass was established.
+Do not add `--force`, reset repositories, or delete existing nested clones to make initialization pass. Sync updates local URL configuration; inspect custom remotes before running it. Completion means all recorded gitlinks resolve, all initialized submodules match the parent-recorded revisions, and nested dependencies initialize successfully. In status output, a leading minus denotes uninitialized, plus denotes a different checked-out revision, and U denotes a conflict.
+
+## Verification and pitfalls
+
+Remote inspection established repository structure, gitlink identities, the existing handoff, selected upstream entry points/manifests, collection commit availability, and EDL's nested Loaders mapping/pin. No clone, submodule initialization, dependency installation, CLI execution, tests, driver installation, or device operations were performed. The mapping repair is not proof of successful fresh checkout or runtime readiness.
+
+Historical setup encountered missing docopt, then started dependency installation without a recorded final success result. Local interpreter, package, driver, and process state remain unknown. Do not treat old background-job handles as current jobs.
+
+Do not infer device support from filenames or the folder name firehoses-pixel-oneplus. Prior Pixel mappings, model/chipset pairings, and partition-behavior claims were speculative. Driver utility presence does not establish a verified driver setup. Interpret Git exit status and actual repository state rather than treating stderr progress alone as failure.
+
+Review caches/session artifacts for repository relevance and sensitive content before proposing cleanup; no exposure is asserted and no deletion is authorized here. Preserve third-party licensing/provenance. Inspect any nested local FRP-GONE directory before moving or removing it.
 
 ## Continuation plan
 
-Proposed sequence, subject to the current repository instructions:
+1. Verify the two-file repair diff and confirm all four parent gitlinks are unchanged.
+2. Test a fresh recursive checkout in a separate directory. Record exact failures without changing pins; inspect additional nested dependencies if initialization fails.
+3. Reconcile the local Windows working tree, remotes, environment, and any untracked project scripts with this snapshot. Preserve local work.
+4. Establish isolated setup and safe non-device smoke checks; record observed outcomes separately from historical claims.
+5. Define the missing menu/configuration/launcher integration and independently test validation, logging, and failure handling. Keep unsupported device mappings excluded from confirmed support.
+6. Review repository hygiene separately and refresh this document after meaningful verification milestones.
 
-1. Inspect the root read-only. Locate applicable instructions, existing context/state files, top-level scripts, manifests, and repository boundaries. Capture branch, commit, and working-tree status for each relevant repository. Completion: an evidence-backed inventory without modifying files.
-2. Reconcile planned deliverables with actual files. Trace any menu through its model configuration and launcher. Completion: each material component classified as verified, implemented but unverified, partial, planned, or unknown.
-3. Establish environment state. Inspect interpreter selection, virtual environments, manifests, installation logs, and script contents. Use safe, targeted checks only where appropriate. Completion: documented prerequisites and exact observed blockers, without speculative installation-success claims.
-4. Establish supported-device evidence. Record exact model/variant, tool version, programmer provenance, and the basis of each compatibility claim. Completion: unsupported mappings remain explicitly excluded from confirmed support.
-5. Propose the smallest remaining implementation work in dependency order. Separate read-only diagnostics from device-changing functions and obtain required approval before side effects. Completion: a scoped plan tied to actual paths, not the old speculative backlog.
-6. Refresh the dedicated handoff using inspected evidence. Reuse an existing unambiguous handoff file; otherwise use `PROJECT_CONTEXT.md` at the project root. Preserve unrelated content and obey write-confirmation requirements. Completion: saved document checked against its intended content and diff where available.
+## Evidence notes
 
-## Readiness summary
-
-The historical evidence establishes downloaded source trees and preliminary investigation, not a ready-to-run toolkit. The immediate next step is local read-only reconciliation, not another download, dependency installation, or device operation.
+Sources: supplied conv-hist.txt and project-context-handoff SKILL.md; authenticated GitHub reads of the parent snapshot and pinned upstream sources. The earlier history-only context is superseded where remote inspection provides evidence. Review remains remote-only and non-exhaustive; a working toolkit and successful device servicing have not been demonstrated.
