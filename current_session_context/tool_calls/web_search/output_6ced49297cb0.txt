@@ -1,0 +1,420 @@
+- boot.elf to firehose? - GSM-Forum
+https://forum.gsmhosting.com/vbb/f83/boot-elf-firehose-3222560-print/
+GSM Programming & Reverse Engineering … to firehose loader? boot.elf is partition type and the file. GSM Hosting Ltd. - 1999-2023
+GSM Programming & Reverse Engineering … to firehose loader?
+boot.elf is partition type and the file.
+
+- bkerler/edl: Inofficial Qualcomm Firehose / Sahara / Streaming / Diag ...
+https://github.com/bkerler/edl
+Inofficial Qualcomm Firehose / Sahara ・ device will enter download mode ・ directory listing of EFS Issues. Programming not supported (Contributions are ...
+# Qualcomm Sahara / Firehose Attack Client / Diag Tools
+...
+# Violating against the GPLv3 license will enforce me to stop developing these opensource tools.
+## QC Sahara V3 Support (Fixed in this fork)
+This fork fixes the issue where Sahara V3 protocol cannot read chip information (MSM_ID, OEM_ID, MODEL_ID) on newer Qualcomm devices.
+
+- [ROOT|UNLOCK] Firehose and Engineering Bootloader are now ...
+https://www.reddit.com/r/LGV60/comments/o6y5az/rootunlock_firehose_and_engineering_bootloader/
+The V60 is what is going wrong. Two firehoses have been used with it; AT&T models were loaded with a Qualcomm-engineering signed ddr firehose ...
+### [ROOT|UNLOCK] Firehose and Engineering Bootloader are now available for download
+...
+The V60 is currently facing some issues.
+Two different firehose files have been utilized for it: AT&T models were flashed with a Qualcomm-engineering signed DDR firehose, which can be built by anyone with access to the leaked source.
+Meanwhile, a T-Mobile version was given a firehose that was originally for the SM8150 (likely from the LG G6) but was renamed to SM8250 by an individual who, frankly, is not very nice.
+...
+Thanks to some assistance, I now have the necessary files for the device, and I believe they cover all its models.
+...
+### Comments
+The signature for the firehose is for ZTE, but it functionally works just fine and was confirmed to work beautifully on the AT&T variant.
+...
+V60 firehose and eng abl were released, officially, and work through QFIL/QPST.
+
+- Should Firehose be published? - Fairphone Community Forum
+https://forum.fairphone.com/t/should-firehose-be-published/129362
+A cheap EDL cable can get to 9008 mode. It's useless without the firehose programmer elf file.
+# Should Firehose be published?
+A cheap EDL cable can get to 9008 mode.
+It’s useless without the firehose programmer elf file.
+Software Update: FP4.QREL.15.15.2
+
+- Firehose programmer for LG V60 - GSM-Forum
+https://forum.gsmhosting.com/vbb/f779/firehose-programmer-lg-v60-2933939-print/
+Hi guys, Does anyone have a programmer for the LG V60 ? The file name should be prog_ufs_firehose_sm8250_lge.elf
+Hi guys, Does anyone have a programmer for the LG V60 ? The file name should be prog_ufs_firehose_sm8250_lge.elf
+
+- Alephgsm/SAMSUNG-EDL-Loaders: edl (emergency ... - GitHub
+https://github.com/Alephgsm/SAMSUNG-EDL-Loaders
+This repository contains firehose programmer binaries ( .elf , .mbn ), loader bit packages ( .tar ), and firmware bundles ( .zip , .
+GitHub - Alephgsm/SAMSUNG-EDL-Loaders: edl (emergency download mode) firehose for samsung qualcomm devices · GitHub
+...
+|Name|Name|Name|Last commit message|Last commit date|
+|--|--|--|--|--|
+|Generic Samsung Firehose|Generic Samsung Firehose|Generic Samsung Firehose| | |
+|Samsung Galaxy A05s (SM-A057F)|Samsung Galaxy A05s (SM-A057F)|Samsung Galaxy A05s (SM-A057F)| | |
+|Samsung Galaxy A20s (SM-A207F)/firehose|Samsung Galaxy A20s (SM-A207F)/firehose|Samsung Galaxy A20s (SM-A207F)/firehose| | |
+|Samsung Galaxy A23 (SM-A235F)/loader_bit|Samsung Galaxy A23 (SM-A235F)/loader_bit|Samsung Galaxy A23 (SM-A235F)/loader_bit| | |
+|Samsung Galaxy A23 (SM-A235M)/loader_bit|Samsung Galaxy A23 (SM-A235M)/loader_bit|Samsung Galaxy A23 (SM-A235M)/loader_bit| | |
+...
+|Samsung Galaxy S20 5G (SM-G981U)|Samsung Galaxy S20 5G (SM-G981U)|Samsung Galaxy S20 5G (SM-G981U)| | |
+|Samsung Galaxy S20 FE 5G (SM-G781B)/firehose|Samsung Galaxy S20 FE 5G (SM-G781B)/firehose|Samsung Galaxy S20 FE 5G (SM-G781B)/firehose| | |
+...
+# Samsung Qualcomm EDL Firehose Loaders
+A curated collection of **Samsung Qualcomm Firehose / EDL loaders** for servicing Samsung devices in **Emergency Download Mode (EDL)**.
+Maintained by **Alephgsm** — GSM Alphabet | Mobile Security Researchers.
+...
+That post is the best place to browse brands, model numbers, and Samsung BIT variants in one place — useful if you are building your own tool or preparing remote EDL work.
+...
+This repository contains firehose programmer binaries (`.elf`, `.mbn`), loader bit packages (`.tar`), and firmware bundles (`.zip`, `.tgz`, `.rar`, `.7z`) for Samsung devices powered by Qualcomm chipsets.
+...
+> **Note:** Each device variant (model number) has its own folder.
+Regional variants like `SM-G973U` and `SM-G973W` are kept separate even if they belong to the same product line.
+For many Samsung models, the correct **BIT** revision also matters — using the wrong BIT can fail even when the model number matches.
+...
+**90+ Samsung model numbers** are supported across Galaxy S, Note, A, M, Z (Fold/Flip), and Tab series.
+See the full list in this repo: **DEVICE_SUPPORT.md**
+...
+SAMSUNG-EDL-Loaders/
+├── Samsung Galaxy A52 5G (SM-A526U)/
+│ ├── firehose/ ← .elf / .mbn firehose programmers
+│ ├── loader_bit/ ← *_LOADER_BIT*.tar packages
+│ └── firmware_packages/ ← .zip / .tgz / .rar / .7z bundles
+...
+- `Samsung Galaxy S10 (SM-G973U)`
+- `Samsung Galaxy S10 Plus (SM-G975U)`
+- `Samsung Galaxy A52 5G (SM-A526U)`
+- `Samsung Galaxy Z Fold 3 (SM-F926B)`
+...
+## How to Use
+1. Put your Samsung device into **EDL Mode** (Qualcomm 9008).
+2. Find your exact **model number** (e.g. `SM-A526U`) on the device label or via `adb shell getprop ro.product.model`.
+3. Navigate to the matching folder in this repository.
+4. Select the appropriate firehose loader from the `firehose/` subfolder (or try `loader_bit/` / `firmware_packages/` if needed).
+5. Load the firehose programmer in your EDL client and proceed with flashing or servicing.
+...
+The `Generic Samsung Firehose/` folder contains Snapdragon platform-based firehose programmers that may work across multiple devices sharing the same chipset:
+|File|Platform|
+|--|--|
+|`prog_firehose_ddr_smd460.elf`|Snapdragon 460|
+|`prog_firehose_ddr_smd680.elf`|Snapdragon 680|
+|`prog_firehose_ddr_smd720g.elf`|Snapdragon 720G|
+|`prog_firehose_ddr_smd778.elf`|Snapdragon 778G|
+|`prog_firehose_ddr_smd855.elf`|Snapdragon 855|
+
+- Qualcomm EDL Firehose Programmers Peek and Poke Primitives
+https://alephsecurity.com/vulns/aleph-2017028
+EDL mode implements the Qualcomm Sahara protocol, which accepts a digitally-signed programmer. Modern such programmers implement the Firehose protocol.
+# Qualcomm EDL Firehose Programmers Peek and Poke Primitives
+## Technical Details
+EDL mode implements the Qualcomm Sahara protocol, which accepts a digitally-signed programmer (an ELF binary in recent devices), that acts as a Second-stage bootloader.
+Modern such programmers implement the `Firehose` protocol.
+
+- How can I convert a Qualcomm firehose file from bin to elf, in order ...
+https://stackoverflow.com/questions/75807452/how-can-i-convert-a-qualcomm-firehose-file-from-bin-to-elf-in-order-to-load-it
+When you want to choose firehose file (EDL loader file) in QFIL, just type *.* in the File name field and Enter, then you will see all files
+Sometimes it is not necessary to change the *bin* to *elf* file format.
+When you want to choose firehose file (EDL loader file) in QFIL, just type
+```
+*.*
+```
+in the **File name** field and Enter, then you will see all files and you can select the file that you want.
+...
+Most modern Qualcomm Firehose loaders are actually ELF files (either 32 or 64 bit).
+They usually have an .elf or .bin extension.
+If your EDL client is so picky you can just rename the loader.
+
+- Identifying EDL (Firehose) loaders - XDA Forums
+https://xdaforums.com/t/identifying-edl-firehose-loaders.4525079/
+So, I've got a beta release utility here. It can (in most cases) identify which model Qualcomm processors a "Firehose" loader is designed for.
+So, I've got a beta release utility here.
+It can (in most cases) identify which model Qualcomm processors a "Firehose" loader is designed for.
+...
+So, just go to My EDL page and go to the bottom and download qcomview.exe
+...
+Obviously, you have to select your own loader.
+...
+Code:
+```
+C:\>qcomview.exe /m poke3.bin
+APQ8096
+APQ8098
+MDM9250
+MDM9255
+MDM9350
+MDM9650
+MDM9655
+MSM8996
+MSM8997
+MSM8998
+QDF2432
+SDA630
+SDA636
+SDA658
+SDA660
+SDM636
+SDM658
+SDM660
+...
+Edit: The current version uses
+```
+/m
+```
+to list models.
+See the web page for further usage.
+
+- edl/edlclient/Library/firehose_client.py at master · bkerler/edl
+https://github.com/bkerler/edl/blob/master/edlclient/Library/firehose_client.py
+Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools :) - bkerler/edl
+bkerler / **
+edl ** Public
+...
+elif cmd == "e":
+if not self.check_param(["<partitionname>"]):
+return False
+luns = self.getluns(options)
+...
+for partitionname in partitions:
+if partitionname in guid_gpt.partentries:
+partition = guid_gpt.partentries[partitionname]
+self.firehose.cmd_erase(lun, partition.sector, partition.sectors)
+self.printer(
+f"Erased {partitionname} starting at sector {str(partition.sector)} " +
+f"with sector count {str(partition.sectors)}.")
+return True
+self.error(
+f"Couldn't erase partition {partitionname}.
+Either wrong memorytype given or no gpt partition.")
+return False
+...
+self.printer(f"Erased sector {str(start)} with sector count {str(sectors)}.")
+
+- edl/edlclient/Library/firehose.py at master · bkerler/edl
+https://github.com/bkerler/edl/blob/master/edlclient/Library/firehose.py
+Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools :) - bkerler/edl
+## Files
+# firehose.py
+## Latest commitbkerler
+## HistoryHistoryexecutable file·1736 lines (1615 loc) · 78.3 KB
+# firehose.py
+
+- GitHub - EZ-302/EDL__-Firehose_-Qualcomm-_Tools-: Unofficial ...
+https://github.com/EZ-302/EDL__-Firehose_-Qualcomm-_Tools-
+Unofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools - EZ-302/EDL__-Firehose_-Qualcomm-_Tools-
+git clone https://github.com/bkerler/edl.git
+cd edl
+git submodule update --init --recursive
+...
+- `edl -h` -> to see help with all options
+- `edl server --memory=ufs --tcpport=1340` -> Run TCP/IP server on port 1340, see tcpclient.py for an example client
+- `edl xml run.xml` -> To send a xml file run.xml via firehose
+- `edl reset` -> To reboot the phone
+...
+- `edl printgpt` -> to print gpt on device with emmc
+- `edl rf flash.bin` -> to dump whole flash for device with emmc
+- `edl rl dumps --skip=userdata --genxml` -> to dump all partitions to directory dumps for device with emmc and skipping userdata partition, write rawprogram0.xml
+...
+- `edl wl dumps` -> to write all files from "dumps" folder to according partitions to flash
+- `edl wf dump.bin` -> to write the rawimage dump.bin to flash
+- `edl e misc` -> to erase the partition misc on emmc flash
+...
+- `edl printgpt --memory=ufs --lun=0` -> to print gpt on lun 0
+...
+- `edl rf lun0.bin --memory=ufs --lun=0` -> to dump whole lun 0
+- `edl rf flash.bin --memory=ufs` -> to dump all luns as lun0_flash.bin, lun1_flash.bin, ...- `edl qfp qfp.bin` -> To dump qfprom fuses (only on EL3 loaders)
+
+- GitHub - worthdoingbadly/bkerler_edl: Fork of https://github ...
+https://github.com/worthdoingbadly/bkerler_edl
+Fork of https://github.com/bkerler/edl. Nothing useful here. - worthdoingbadly/bkerler_edl
+# Qualcomm Sahara / Firehose Attack Client / Diag Tools
+...
+git clone https://github.com/bkerler/edl
+cd edl
+git submodule update --init --recursive
+pip3 install -r requirements.txt
+...
+Your device needs to have a usb pid of 0x9008 in order to make the edl tool work.
+...
+- `edl -h` -> to see help with all options
+- `edl server --memory=ufs --tcpport=1340` -> Run TCP/IP server on port 1340, see tcpclient.py for an example client
+- `edl xml run.xml` -> To send a xml file run.xml via firehose
+- `edl reset` -> To reboot the phone
+...
+- `edl [anycommand] --debugmode` -> enables Verbose.
+...
+- `edl printgpt` -> to print gpt on device with emmc
+- `edl rf flash.bin` -> to dump whole flash for device with emmc
+- `edl rl dumps --skip=userdata --genxml` -> to dump all partitions to directory dumps for device with emmc and skipping userdata partition, write rawprogram0.xml
+...
+- `edl wl dumps` -> to write all files from "dumps" folder to according partitions to flash
+- `edl wf dump.bin` -> to write the rawimage dump.bin to flash
+- `edl e misc` -> to erase the partition misc on emmc flash
+...
+- `edl printgpt --memory=ufs --lun=0` -> to print gpt on lun 0
+- `edl printgpt --memory=ufs` -> to print gpt of all lun
+- `edl rf lun0.bin --memory=ufs --lun=0` -> to dump whole lun 0
+...
+- `edl qfp qfp.bin` -> To dump qfprom fuses (only on EL3 loaders)
+
+- edl/edl at master · bkerler/edl
+https://github.com/bkerler/edl/blob/master/edl
+Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools :) - bkerler/edl
+edl -h | --help
+...
+edl peek <offset> <length> <filename> [--loader=filename] [--debugmode] [--skipresponse] [--vid=vid] [--pid=pid] [--portname=portname] [--serial]
+
+- bkerler/edl — GitHub Star History & Stats
+https://gittrend.io/repo/bkerler/edl
+Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools :) ★ 2.6k stars on GitHub. Compare edl with alternatives and follow its momentum.
+Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools :)
+...
+EDL is a Python toolset for interacting with Qualcomm devices in EDL (Emergency Download) mode via USB PID 0x9008.
+It implements Sahara, Firehose, Streaming, and Diag protocols to dump memory, flash firmware, and recover bricked devices.
+The tool supports loader autodetection, raw XML commands, and TCP/IP server mode for remote operations.
+...
+- Supports Firehose XML-based flashing and memory dumping
+...
+Firehose then handles high-level operations like reading/writing flash partitions via XML commands.
+...
+Send custom Firehose XML commands to write partitions or modify device storage.
+...
+Parse sniffed loader binaries or existing EDL tools into autodetectable loader format.
+...
+Send an XML file: edl xml run.xml
+
+- Firehose Protocol Implementation | bkerler/edl | DeepWiki
+https://deepwiki.com/bkerler/edl/3.3-firehose-protocol-implementation
+This page documents the implementation of the Qualcomm Firehose Protocol within the EDL (Emergency Download Mode) tool. The Firehose Protocol is a low-level communication protocol used to interact wit
+Relevant source files - edl
+- edlclient/Library/firehose.py
+- edlclient/Library/firehose_client.py
+- edlclient/Library/gpt.py
+This page documents the implementation of the Qualcomm Firehose Protocol within the EDL (Emergency Download Mode) tool.
+The Firehose Protocol is a low-level communication protocol used to interact with Qualcomm devices in EDL mode, enabling operations such as flashing, reading, and erasing partitions.
+...
+The Firehose Protocol serves as the primary communication mechanism after a device has been initialized via the Sahara Protocol.
+It provides a structured way to send commands to a device and receive responses, facilitating operations on device storage and memory.
+...
+|Parameter|Description|Default Value|
+...
+|MemoryName|Type of storage (eMMC, UFS, NAND)|"eMMC"|
+|SECTOR_SIZE_IN_BYTES|Sector size of the storage|512 or 4096|
+|MaxPayloadSizeToTargetInBytes|Maximum size of data sent to target|1048576|
+|MaxPayloadSizeFromTargetInBytes|Maximum size of data received from target|8192|
+|MaxXMLSizeInBytes|Maximum size of XML commands|4096|
+...
+The Firehose Protocol uses XML-based commands to communicate with the device.
+Each command follows a specific flow from creation to execution and response handling.
+...
+The Firehose Protocol uses XML for command structuring.
+Here's an example of how commands are formatted:
+...
+1. Erase command:
+...
+The `xmlsend` method is central to the Firehose Protocol implementation.
+It handles sending XML commands to the device and processing the responses.
+...
+The Firehose implementation provides methods for reading and writing to specific partitions:
+1. `cmd_read` - Reads data from a partition to a file
+2. `cmd_program` - Writes data from a file to a partition
+3. `cmd_erase` - Erases data in a partition
+...
+|CLI Command|Description|Firehose Method|
+|--|--|--|
+|e|Erase partition|cmd_erase()|
+
+- The open-source GitHub repository is now up. : r/essential - Reddit
+https://www.reddit.com/r/essential/comments/f3ws9t/the_opensource_github_repository_is_now_up/
+The open-source GitHub repository is now up. no Firehose file will be provided. This is allegedly because Qualcomm owns the rights to these  ...
+### The open-source GitHub repository is now up.
+The main device build code has just been released, as promised.
+You can find it here: (://github/EssOpenSource_essential_mata).
+Update: I received an email from Essential indicating that they will not be providing a Firehose file.
+This decision reportedly stems from Qualcomm holding the rights to these files rather than Essential.
+It seems there isn't [Fireose,L] included in the repository.
+They mentioned that a pre-compiled vendor image will be made available soon for developers, but it looks like we're still in search of an .elf file, which doesn't appear to be part of repo.
+
+- strongtz/edl-ng - GitHub
+https://github.com/strongtz/edl-ng
+A modern, user-friendly tool for interacting with Qualcomm devices in Emergency Download (EDL) mode. edl-ng provides tools for both Sahara and Firehose ...
+GitHub - strongtz/edl-ng: A modern, user-friendly tool for interacting with Qualcomm devices in Emergency Download (EDL) mode.
+· GitHub
+1. strongtz
+2. edl-ng
+...
+# edl-ng
+**A modern, user-friendly tool for interacting with Qualcomm devices in Emergency Download (EDL) mode.**
+Built with .NET, `edl-ng` provides tools for both Sahara and Firehose protocols, enabling device flashing, partition management, and low-level device interaction.
+## Features
+...
+- **Sahara Protocol Support:** - Upload Firehose programmers (`.elf` files).
+...
+- **Firehose Protocol Support:** - Automatic Firehose configuration.
+...
+`edl-ng` can be downloaded from:
+...
+- `upload-loader`: Connects in Sahara mode and uploads the specified Firehose loader.
+(e.g., qsahara_device_programmer.xml, xbl_s_devprg_ns.melf or prog_firehose_*.elf)
+...
+### Examples
+- **Flash a flat build to device using rawprogram XML files**
+```
+edl-ng --loader prog_firehose_ddr.elf --memory UFS rawprogram rawprogram*.xml patch*.xml
+```
+- **Collect all regions from a `0x900E` crashdump device:**
+...
+You may also need to configure udev rules on Linux to allow user access to the device.
+- **Firehose Programmer:** An appropriate `.elf` programmer file for your specific device (e.g., `prog_firehose_*.elf` or `xbl_s_devprg_ns.melf`).
+
+- Qualcomm-Firehose/prog_ufs_firehose_sm6250_lite.elf at master
+https://github.com/zenlty/Qualcomm-Firehose/blob/master/prog_ufs_firehose_sm6250_lite.elf
+Contribute to zenlty/Qualcomm-Firehose development by creating an account on GitHub. Qualcomm-Firehose Repository navigation Code Issues2 … © 2026 GitHub, Inc.
+zenlty / **
+Qualcomm-Firehose ** Public
+## Files
+# prog_ufs_firehose_sm6250_lite.elf
+## Latest commit
+zenlty
+Update Firehose
+Apr 8, 2021
+4e66c3d · Apr 8, 2021
+## History
+History
+649 KB
+# prog_ufs_firehose_sm6250_lite.elf
+649 KB
+View raw
+
+- GitHub - hoplik/Firehose-Finder: Однокнопочная программа с GUI ...
+https://github.com/hoplik/Firehose-Finder
+Однокнопочная программа с GUI для подбора программера (firehose) к определённым моделям телефонов на базе процессоров Qualcomm.
+hoplik / **
+Firehose-Finder ** Public
+# hoplik/Firehose-Finder
+|# Firehose-Finder|# Firehose-Finder|
+...
+|Вот справочная таблица загрузчиков, доступных на двух сайтах.
+Вы можете выполнить поиск по хэшу PK или файлу MD5, чтобы найти загрузчик.
+
+- SDX62/65 Loaders · Issue #82 · bkerler/Loaders - GitHub
+https://github.com/bkerler/Loaders/issues/82
+here is it: Qualcomm Sahara / Firehose Client V3.61 (c) B.Kerler 2018-2023. main - Using loader prog_firehose_lite.elf ..
+bkerler / **
+Loaders ** Public
+# SDX62/65 Loaders #82
+Open
+...
+Qualcomm Sahara / Firehose Client V3.61 (c) B.Kerler 2018-2023.
+main - Using loader prog_firehose_lite.elf ...There is a loader but not public available, so that person wants to avoid any legal issue with ZTE
+...
+If it's a plain MC888, Quectel loader of RM520 will work.
+But if it's 888A or D no, needs signed loader
+...
+Hi @bkerler
+here are the loaders:
+- Quectel RM520N (SDX62)
+- SIMCOMM 8260 and 8262 (SDX62)
+- SIMCOMM 8380 (SDX65)
+Loader_SDX6X.zip
+Feel free to add to the collection :)
+...
+Yes I know, newer ZTE device are secure booted and needs signed loader
+

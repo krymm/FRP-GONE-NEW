@@ -1,0 +1,170 @@
+More content is available; call read again with offset=169.
+
+1	create-local-skill github Is it possible for you to script firehoses and specific batch files for specific models etc  for me to crack FRP on difficult phones?
+2	Please create a skill for yourself if that helps you perform this, or add phones to the menu. Then do create and download the files required, including downloading any necessary executables that may need to be called to run a firehose.github  and include them in the folder structure  for this new project.
+3	Previous planing:
+4	They're asking for a "firehose" for cracking FRP on difficult phones — batch files/scripts for specific models.
+5	Create a skill for myself (create-local-skill) that helps with this.
+6	Create and download the necessary files including executable files required to run the firehose (e.g. Qualcomm's firehose programmer .elf + patched, MTK tools, etc.?)
+7	Save them in the folder structure for this new project (FRP-GONE folder).
+8	They tagged GitHub, Hugging Face, FireCrawl — probably to use these tools for downloading executables / finding resources.
+9	So the plan:
+10	Use FireCrawl / web search to find firehose files and the correct links for FRP bypass tools (Qualcomm firehose .elf files per model, MTK SP Flash Tool, etc.).
+11	Create a folder structure in X:\FRP-GONE:
+12	FRP-GONE/
+13	firehoses/ (Qualcomm .elf programmers)
+14	mtk/ (SP Flash Tool, MTK Universal Tool, USB Dk drivers)
+15	drivers/ (Qualcomm QDLoader, MTK VCOM/USB-DK)
+16	batch/ or scripts/ (.bat launchers per model)
+17	frp_bypass.bat (menu — main launcher)
+18	Download the executables:
+19	MTK Universal Tool (androidfilehost link)
+20	Possibly Qualcomm firehose programmer .elf files for common models. But firehose .elf files are model-specific and numerous. Can download a general firehose bundle. There's a known repository: a GitHub "firehose" collection for Qualcomm devices. There's https://github.com/VitalyDobrotka... no. Let me think: there's the famous "firehose programmer" file hosted per device. There's the gsmhosting "Qualcomm firehose files" list and the repository https://github.com/felix106/firehose? Not sure. There's also https://github.com/kdrag01/qup... hmm.
+21	Known: "Firehose" = Qualcomm's flash file (prog_*.elf) used in QFIL/QPST. A "firehose" batch for FRP: connect in 9008 EDL mode and run QFIL with the .firehose.elf and the FRP bypass XML (format_userdata / FRP partition erase) — the classic method: EDL → load firehose → erase "frp" partition via QFIL's "Flash" with XML, or use fastboot-format. Actually, the common firehose FRP method: use Qualcomm's "firehose" programmer + mcs flash to erase the userdata or frp partition — via QPST's "Flash" with scatter file, or use "edl" tool (mtkclient equivalent: qdl/edl command line).
+22	Better approach for scripting: use the edl.py command-line tool (from the MtkClient/QCFlash ecosystem: https://github.com/bkerler/edl.py) — edl.py format 6 etc. Firehose .elf file per device + edl.py to erase the FRP partition. That's the "firehose" method.
+23	So the script:
+24	frp_bypass.bat menu: list models (Qualcomm firehose-based: Pixel, OnePlus, Moto, Xperias, TCL 10/20 series, Redmi Note 7, etc.; MTK: T432J etc.).
+25	Per-model batch files: call the firehose .elf + edl format command.
+26	Downloads needed:
+27	MTK Universal Tool V2 zip (androidfilehost) → x:\FRP-GONE\mtk\MediaTek Universal Tool V2.0... Actually the zip contains MediaTek Universal Tools.exe, Driver, etc.
+28	USBDK driver (from the MTK tool zip or the separate USBDK_... download).
+29	edl.py — Python script; needs Python. Can download edl.py from GitHub raw (bkerler/edl.py). This is the firehose runner (runs programmatically with firehose .elf + QPST... actually edl.py takes a firehose .elf). So the batch calls python edl.py --firehose firehoses\hsicop.elf format 6 etc.
+30	Firehose .elf files for popular models — these can be obtained from known sources. E.g. the gsmhosting firehose repository: https://github.com/kdrag01... let me actually check known hosts:
+31	https://github.com/Diablo-Danz/firehose-programmers? No...
+32	There's a known repository: https://github.com/MikeHalstead... not sure.
+33	There's "firehose" per model on the gsmhosting forum: "Qualcomm Firehose Programmers (.elf) - Big List".
+34	There's also a site called firehoseprogrammers.com? Let me search.
+35	FireCrawl / Hugging Face are also tagged. Hugging Face has model/dataset hosting — could host the files. Use FireCrawl to find download links.
+36	Plan of action:
+37	Create the skill (create-local-skill) — a "frp-gone" skill that documents the project: menu of phones, firehose workflow, batch conventions.
+38	Build the folder structure in FRP-GONE.
+39	FireCrawl the MTK Universal Tool androidfilehost page → get the direct download URL → download the zip via shell (curl/PowerShell Invoke-WebRequest) to x:\FRP-GONE\tools\MediaTekUniversalToolV2.zip, extract.
+40	Download USB Dk driver (USB_DK_... from the tool, or the official libusb site).
+41	Download edl.py from GitHub raw.
+42	Download a few firehose .elf files for representative "difficult" phones (Qualcomm):
+43	OnePlus 3/3T (HSICOP? no), Pixel 2/3 (lahaina/hawaii), Moto G5 (mako?) etc.
+44	Actually, the typical "frp" difficult list (the famous "firehose frp": Pixel, Moto, OnePlus, TCL, Xperias).
+45	Create the main menu batch frp_gone.bat and per-model batches like frp_pixel3.bat.
+46	Given the time, let me first search for the firehose file hosts.
+47	Please ignore any mention of firecrawl and hugging face in these thoughts, we will not be using those tools. Only github and websearch please
+48	
+49	____________
+50	Thinking and response:
+51	____________
+52	
+53	The user wants to build an FRP bypass project with "firehose" scripts/batch files for specific models. To crack FRP on hard-to-handle phones:
+54	Create a local skill for myself that documents this project/approach
+55	Create a folder structure in X:\FRP-GONE
+56	Create batch files per model (firehose .elf + edl.py, etc.)
+57	Download the necessary executables (edl.py, firehose .elf files, MTK tools, drivers)
+58	Use only git hub and web search (firecrawl and hugging face are not allowed)
+59	First, let's start by investigating what's available. Plan:
+60	Check the current directory
+61	Web search for firehose .elf files and reliable sources
+62	Find firehose .elf download links via GitHub (bkerler/edl repo, maybe the "firehose-programmers" repo too)
+63	Build the structure:
+64	FRP-GONE/
+65	frp_gone.bat (main menu)
+66	firehoses/ (Qualcomm .elf programmers)
+67	edl/ (edl.py + dependencies)
+68	mtk/ (SP Flash Tool-related, MTK Universal Tool)
+69	drivers/ (QDLoader 9008 driver, MTK VCOM/USB-DK)
+70	models/ (batch scripts per model)
+71	Download the executables:
+72	edl.py (from the bkerler/edl GitHub repo)
+73	Firehose .elf files for popular models. Let's search GitHub for a firehose programmer collection. For example: "Qualcomm firehose programmer list" — a list at gsmhosting: https://www.gsmhosting.com/phpBB3/... There are also github repos like "kdrag01/qcomfirehose"... Let's search.
+74	Let's start the investigation in parallel: shell CWD check, Web search for firehose .elf file lists + edl.py.
+75	Actually, let me recall known sources:
+76	edl.py: https://pypi.org/project/edl/ — github: https://github.com/bkerler/edl.py — the main file is edl.py in the repository root.
+77	bkerler's "qfs" tool? There's also mtkclient from the same developer.
+78	Firehose file list: A classic gsmhosting thread enumerating prog_*.elf per device with links to files in the https://gsmhosting.com/downloads/... format? Actually, firehose .elf files are usually in EDL dump collections (Qualcomm dump). There are also collections like "Qualcomm Firehose Programmer (prog_elf) - big list" at https://www.gsmhosting.com/phpBB3/viewtopic.php?f=15&t=23488.
+79	Let's do Web searches to find actual download links. I'll search for:
+80	"firehose programmer elf download list"
+81	"edl.py github bkerler firehose frp"
+82	Then use GitHub tools to look for repos with firehose .elf files. For example: search_repositories "firehose" language: — search_code for "prog_firehose" etc.
+83	Let's begin: in parallel:
+84	shell: list the CWD (FRP-GONE folder)
+85	web_search queries
+86	After that, design the structure.
+87	About the skill: Create a skill called "frp-gone" (or "frp-firehose") that describes the project: workflow (EDL 9008 mode → edl.py with firehose .elf → erase FRP partition / user data format), per-model batch conventions, phone list and their firehose elf names, MTK path (MTK Universal Tool / mtkclient), driver installation (QDLoader 9008 + MTK VCOM USB-DK), and how to add new models.
+88	Now let's do the investigation.
+89	I'll start by checking the project folder and researching where firehose executables live on GitHub and the web.
+90	boot.elf to firehose? - GSM-Forum
+91	forum.gsmhosting 
+92	bkerler/edl: Inofficial Qualcomm Firehose / Sahara / Streaming / Diag ...
+93	githu b
+94	[ROOT|UNLOCK] Firehose and Engineering Bootloader are now ...
+95	reddit
+96	The FRP-GONE folder has an FRP-GONE subfolder? Interesting — the output shows the "Name: FRP-GONE" directory. So inside X:\FRP-GONE there's a subfolder named FRP-GONE. Let me check deeper. Also, I found the important repositories:
+97	bkerler/edl — the edl.py tool (Python).
+98	zenlty/Qualcomm-Firehose — a GitHub repo with a bunch of firehose .elf files! Perfect for downloading via the GitHub API.
+99	Alephgsm/SAMSUNG-EDL-Loaders — Samsung firehose.
+100	hoplik/Firehose-Finder — a GUI app for selecting firehose per model.
+101	Plan:
+102	Build the FRP-GONE structure:
+103	frp_gone.bat — main menu
+104	edl\ — edl.py + requirements (download from bkerler/edl)
+105	firehoses\ — .elf programmers (download from zenlty/Qualcomm-Firehose + Samsung ones)
+106	models\ — per-model batch files
+107	mtk\ — MTK tools (MTK Universal Tool / SP Flash Tool), MTK VCOM driver
+108	drivers\ — Qualcomm QDLoader 9008 driver
+109	The FRP-bypass firehose technique: edl.py format 4|6|8 or edl e <partition> — the firehose trick: use edl's format command to format userdata, or erase the FRP partition (frp).
+110	About edl.py's firehose FRP: typical usage: python edl.py --firehose prog_xxx.elf format 6 (format userdata) — this resets the FRP lock since it wipes userdata including the FRP lock flag. Even better: edl e frp (if the device has an frp partition) or format userdata.
+111	Also note that edl.py requires Python. We might download edl.py + its requirements. The batch file will need python. Alternatively, we could use a pre-compiled tool like "QFIL". But the user's previous planning thoughts said "edl.py — a Python script, Python is required." So the batch calls python edl.py .... To make the batch self-contained, we can download edl.py and its requirements, and have the batch check for python on PATH (or offer an option to install it via winget).
+112	Let me check what's in zenlty/Qualcomm-Firehose — list the files. Also check the bkerler/edl repo structure to know what to download (edl.py, requirements.txt, edlclient library). edl.py depends on the edlclient package. So either clone the repo or download edl.py + the edlclient folder. Easier: clone the whole repo (it's small). We can clone via PowerShell's git (git may be available) or download the tarball via the GitHub API.
+113	Also for MTK: "MTK Universal Tool V2" from androidfilehost — but the user said to use only GitHub and web search. MTK Universal Tool is on androidfilehost (not GitHub). Let me web-search for a GitHub link to MTK Universal Tool or MTK USB drivers. Actually, there's "MTKClient" (bkerler/mtkclient) — a Python tool for MediaTek! That's on GitHub. It can do FRP via MTK: mtkclient format? Actually, MTKClient does mtkclient write, flash, and mtkclient erase. There's also mtkclient frp... let me think. MTK devices store FRP in "proinfo"/"userdata" partitions, or the "frp" file on the NVRAM... Common FRP-bypass method for MTK: use the "MTK Universal Tool" app directly (FRP bypass feature). On PC, use SP Flash Tool. But MTKClient might not handle FRP directly...
+114	Hmm, but the user's plan was MTK via MTK Universal Tool. However, MTK Universal Tool isn't on GitHub. Alternatives on GitHub: "SP Flash Tool" isn't open-source either. But MTKClient (bkerler) is on GitHub, and it can handle MTK FRP? Let me check MTKClient's features: mtkclient flash, mtkclient write, mtkclient dump, and it also has an mtkclient format command? I recall mtkclient supports format (erase + re-create partitions). And FRP on MTK: the FRP lock (Gmail account) is stored in userdata. Format userdata = FRP cleared. In MTKClient: mtkclient format — yes, I'm fairly confident there's a format command that formats the partitions.
+115	Let me quickly search GitHub for MTKClient and MTK FRP. Also check the file list of zenlty/Qualcomm-Firehose.
+116	I'll use GitHub MCP tools:
+117	get_file_contents for zenlty/Qualcomm-Firehose (root) to list the .elf files
+118	Search for bkerler/mtkclient to confirm the FRP/format feature
+119	Then build everything.
+120	Steps:
+121	git clone bkerler/edl into FRP-GONE\edl (or download the tarball). Also clone bkerler/mtkclient into FRP-GONE\mtk.
+122	Download firehose .elf files for the models I chose into FRP-GONE\firehoses.
+123	Create per-model batch files.
+124	Main menu frp_gone.bat.
+125	Driver download: QDLoader 9008 driver — there are GitHub repos containing the "Qualcomm HS-USB QDLoader 9008" driver (usb driver package "Qualcomm_Hardware_Usb_Drivers"). Let me search GitHub for the QDLoader driver.
+126	Create the "frp-gone" skill.
+127	First, let me confirm the structure of the CWD folder, and list the zenlty repo + search for the QDLoader driver on GitHub.
+128	I found that bkerler/edl handles Qualcomm Firehose while zenlty/Qualcomm-Firehose has the .elf programmers collection. Now I'll explore the repo contents and locate EDL drivers and MTK tools.
+129	The zenlty/Qualcomm-Firehose repo has tons of .mbn/.elf files. Let me grab the full file list. The output was cut off partway. I'll extract just the download URLs of the relevant files. Let me check the names in the full output file.
+130	Actually, let me take a smarter approach: download the repo's tarball, or just enumerate the files. I'll read the full output file and extract the names. No, let me just grep the download_url lines.
+131	The FRP-GONE folder is nearly empty. Let me pull the full file listing from the firehose repo and plan the structure.
+132	$ C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -Command $f = "current_session_context\tool_calls\get_file_contents\output_a6eef70d9de9.txt"; $j = Get-Content $f -Raw | ConvertFrom-Json; $j | ForEach-Object { "$($_.name)  ($([math]::Round($_.size/1KB)) KB)" }
+133	[exit 0]
+134	--- stdout ---
+135	Acer_8909.mbn  (278 KB) Asus_X003_T500.mbn  (90 KB) BLU_8937.mbn  (371 KB) BLU_8x26.mbn  (81 KB) Casper_VIA_E1C.mbn  (274 KB) Casper_VIA_P1.mbn  (371 KB) Casper_VIA_V10.mbn  (90 KB) Casper_VIA_V6.mbn  (87 KB) Casper_VIA_V6X.mbn  (87 KB) Coolpad_3635A.mbn  (369 KB) Coolpad_Cool1.mbn  (346 KB) General_Mobile_GM5.mbn  (91 KB) General_Mobile_GM8.mbn  (395 KB) General_Mobile_GM_4G.mbn  (91 KB) General_Mobile_GM_5_Plus.mbn  (315 KB) General_Mobile_GM_9_Pro.elf  (614 KB) Gionee_GN5007.mbn  (403 KB) HAI_8909.mbn  (277 KB) LYF2.mbn  (264 KB) LYF3.mbn  (314 KB) LYF_S5010.mbn  (96 KB) LeEco_Le_2_X528.mbn  (347 KB) Lenovo_A6010.mbn  (91 KB) Lenovo_A6020.mbn  (99 KB) Lenovo_A6020A46.mbn  (99 KB) Lenovo_A6020I36.mbn  (99 KB) Lenovo_A6020I37.mbn  (99 KB) Lenovo_A6020a40Dual.mbn  (99 KB) Lenovo_K33.mbn  (401 KB) Lenovo_K53.mbn  (397 KB) Lenovo_K53A48.mbn  (401 KB) Lenovo_K6_Note_K53A48.mbn  (398 KB) Lenovo_K920.mbn  (82 KB) Lenovo_MSM8X26.mbn  (72 KB) Lenovo_P1a42.mbn  (99 KB) Lenovo_S60.mbn  (91 KB) Lenovo_S90.mbn  (87 KB) Lenovo_Z2_Pro.elf  (464 KB) Lenovo_ZUK_Z2.elf  (445 KB) MPRG8916_Xiaomi.mbn  (56 KB) MSM8610.mbn  (78 KB) MSM8909.mbn  (152 KB) MSM8916.mbn  (91 KB) MSM8917.mbn  (369 KB) MSM8926.mbn  (72 KB) MSM8929.mbn  (99 KB) MSM8936.mbn  (99 KB) MSM8937.mbn  (371 KB) MSM8939.mbn  (278 KB) MSM8940.mbn  (403 KB) MSM8952.mbn  (315 KB) MSM8953.mbn  (351 KB) MSM8974.mbn  (71 KB) MSM8976.mbn  (336 KB) MSM8992.mbn  (395 KB) MSM8994.mbn  (298 KB) MSM8996.mbn  (445 KB) MSM8998.mbn  (584 KB) MSM8x10.mbn  (78 KB) MSM8x26.mbn  (100 KB) MSM_8909.mbn  (152 KB) MSM_8916.mbn  (91 KB) MSM_8926.mbn  (72 KB) MSM_8936.mbn  (99 KB) MSM_8x10.mbn  (78 KB) Motoath_MSM8952.mbn  (336 KB) NK5.mbn  (215 KB) NK6.mbn  (215 KB) NPRG24.bin  (81 KB) Nokia_TA-1003_Hisen.mbn  (369 KB) Nokia_TA-1029.mbn  (280 KB) Oppo_A13F.mbn  (95 KB) Oppo_A33F.mbn  (95 KB) Oppo_A37.mbn  (95 KB) Oppo_A57.mbn  (398 KB) Oppo_F1-2.mbn  (99 KB) Oppo_F1.mbn  (99 KB) Oppo_F1F.mbn  (99 KB) Oppo_R7SPlus.mbn  (99 KB) Oppo_R9S.mbn  (351 KB) Oppo_R9S_Plus.mbn  (349 KB) Oppo_R9S_Plusma_8976.mbn  (336 KB) Oppo_Vivo.mbn  (95 KB) Orange_Dive_71.mbn  (271 KB) Turkcell_T50.mbn  (100 KB) Turkcell_T60_8916.mbn  (214 KB) Turkcell_T60_8939.mbn  (278 KB) Turkcell_T70.mbn  (271 KB) Vestel_5.5V_VSP355G.mbn  (81 KB) Vestel_5.5X_VSP355S.mbn  (81 KB) Vestel_V1_29S.mbn  (71 KB) Vestel_Venus_5.0V_VSP250G.mbn  (71 KB) Vestel_Venus_5.0X.mbn  (71 KB) Vestel_Venus_Go.mbn  (275 KB) Vestel_Venus_V3_5000.mbn  (273 KB) Vestel_Venus_V3_5010.mbn  (274 KB) Vestel_Venus_V3_5040.mbn  (274 KB) Vestel_Venus_V3_5070.mbn  (98 KB) Vestel_Venus_V3_5530.mbn  (273 KB) Vestel_Venus_V3_5570.mbn  (98 KB) Vestel_Venus_V6.mbn  (367 KB) Vestel_Venus_Z10.mbn  (395 KB) Vestel_Venus_Z20.elf  (616 KB) Vivo_X7.mbn  (336 KB) Vivo_X7_Plus.mbn  (336 KB) Vivo_X9.mbn  (349 KB) Vivo_X9S.mbn  (395 KB) Vivo_X9S_Plus.mbn  (353 KB) Vivo_X9_Plus.mbn  (352 KB) Vivo_XPlay_6.elf  (464 KB) Vivo_Y51.mbn  (91 KB) Vivo_Y53.mbn  (326 KB) Vivo_…9 KB) Xiaomi_Mi_Max_2.mbn  (358 KB) Xiaomi_Mi_Mix.elf  (445 KB) Xiaomi_Mi_Note_2.elf  (445 KB) Xiaomi_Mi_Note_3.mbn  (336 KB) Xiaomi_Mi_Note_Pro.mbn  (298 KB) Xiaomi_Redmi_3.mbn  (99 KB) Xiaomi_Redmi_3S.mbn  (371 KB) Xiaomi_Redmi_3X.mbn  (371 KB) Xiaomi_Redmi_4-GP.mbn  (355 KB) Xiaomi_Redmi_4-PT.mbn  (391 KB) Xiaomi_Redmi_4A.mbn  (369 KB) Xiaomi_Redmi_4X.mbn  (403 KB) Xiaomi_Redmi_5.mbn  (358 KB) Xiaomi_Redmi_5A.mbn  (376 KB) Xiaomi_Redmi_5_Plus.mbn  (356 KB) Xiaomi_Redmi_6.elf  (568 KB) Xiaomi_Redmi_Note_3-4.mbn  (82 KB) Xiaomi_Redmi_Note_3_Pro.mbn  (336 KB) Xiaomi_Redmi_Note_4G.mbn  (40 KB) Xiaomi_Redmi_Note_5A-GP.mbn  (400 KB) Xiaomi_Redmi_Note_5A-PT.mbn  (372 KB) Xiaomi_Redmi_Note_5A-Prime.mbn  (400 KB) Xiaomi_Redmi_Y1.mbn  (400 KB) Xiaomi_Redmi_Y1_Lite.mbn  (372 KB) Xioami_Mi_4C_S.mbn  (395 KB) ZTE_Blade_A506.mbn  (271 KB) ZTE_Lite.mbn  (184 KB) ZUK_Z2-Pro.elf  (446 KB) ZUK_Z2.elf  (446 KB) ginkgo_willow_noauth_ddr.elf  (582 KB) prog_ufs_firehose_sm6250_lite.elf  (649 KB) 
+136	[... stdout truncated ...]
+137	--- stderr ---
+138	Let me grab the full list. The stdout got truncated partway through. Let me extract just the download URL into a file, read it, and pick a set of important "hard-to-handle" FRP models.
+139	$ C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -Command $f = "current_session_context\tool_calls\get_file_contents\output_a6eef70d9de9.txt"; $j = Get-Content $f -Raw | ConvertFrom-Json; $j | ForEach-Object { "$($_.name)`n$($_.download_url)" } | Set-Content -Encoding UTF8 x:\FRP-GONE\_firehose_list.txt; (Get-Content x:\FRP-GONE\_firehose_list.txt | Measure-Object -Line).Lines
+140	[exit 0]
+141	--- stdout ---
+142	326 --- stderr ---
+143	The list has 326 lines (163 files). I have all the information I need. Now, let's plan out the project.
+144	The "firehose for FRP" method works on Qualcomm devices:
+145	Connect the phone in 9008 (EDL) mode. The 9008 driver is required.
+146	Load the device-specific firehose programmer (.elf/.mbn).
+147	Erase the FRP lock — the standard approach is to format userdata. On edl.py: edl.py format 4 (eMMC) or format 6/8 (UFS) — or, if the phone has a dedicated frp partition, run edl.py e frp.
+148	About the "hard-to-handle" phones for FRP — the classic ones that use firehose EDL:
+149	Google Pixel (all of them, Qualcomm) — the classic FRP-hard-to-handle ones
+150	OnePlus (OnePlus 2/3/5T etc.)
+151	Moto (G-series, Z-series)
+152	TCL/Alcatel
+153	Xiaomi/Redmi (89xx SoCs)
+154	LG (G-series, V-series)
+155	Samsung (Qualcomm variants)
+156	Asus ZenFone
+157	The zenlty collection is mostly older devices (Redmi, Oppo, Vivo, Lenovo). This is a good starting collection for the batch file. Plus, bkerler/edl.py is the runner.
+158	As for "hard-to-handle phones," the standard list of devices where FRP is a problem:
+159	Google Pixel 2/3/4 (SM8150/SM8550/SM8150)
+160	OnePlus 3/3T
+161	OnePlus 5/5T
+162	OnePlus 6/6T
+163	Moto G5/G6
+164	Moto Z/Z2
+165	TCL 10 Plus, TCL 20
+166	LG V60
+167	Redmi Note 7 etc. (SM89xx)
+168	Samsung S10, S20, A-series (Qualcomm variants)
